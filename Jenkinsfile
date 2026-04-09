@@ -1,7 +1,6 @@
 pipeline {
-    agent {
-        label 'wsl'
-    }
+    agent any
+
 
     triggers {
         githubPush()
