@@ -1,17 +1,19 @@
 pipeline {
     agent any
 
-
-    triggers {
-        githubPush()
-    }
-
     environment {
         APP_NAME    = 'my-nginx-web'
         IMAGE_TAG   = "${BUILD_NUMBER}"
     }
 
     stages {
+        stage('Initial Test') {
+            steps {
+                echo "Pipeline is starting..."
+                echo "Building: ${APP_NAME}:${IMAGE_TAG}"
+            }
+        }
+
         stage('Checkout') {
             steps {
                 checkout scm
