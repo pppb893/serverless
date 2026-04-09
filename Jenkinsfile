@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'k8s-agent-1'
+        label 'wsl'
     }
 
     triggers {
@@ -41,7 +41,7 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 script {
-                    sh "kubectl rollout status deployment/nginx-deployment --timeout=120s"
+                    sh "kubectl rollout status deployment/nginx-deployment"
                     sh "kubectl get pods -l app=my-nginx"
                     sh "kubectl get svc nginx-service"
                     sh "kubectl get ingress nginx-ingress"
